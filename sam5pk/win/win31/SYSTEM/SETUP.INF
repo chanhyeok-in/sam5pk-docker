@@ -1,0 +1,1337 @@
+[setup]
+    help = setup.hlp
+
+;   Place any programs here that should be run at the end of setup.
+;   These apps will be run in order of their appearance here.
+[run]
+
+[dialog]
+    caption   = "설치관리자"
+    exit      = "설치관리자 종료"
+    title     = "한글 윈도우 3.1 설치"
+    options   = "한글 윈도우 3.1 설치 외에 다음을 할 수 있습니다:"
+    printwait = "설치관리자가 프린터를 구성하는 동안 잠시 기다리십시오..."
+    copywait = "한글 윈도우를 시작합니다.\n\n   - 윈도우를 사용해 본 적이 없으면 \n     한글 윈도우의 소개 부분을 참고하시고,\n\n   - 윈도우를 사용해 본 적이 있으면 \n     입문서에서 이 버전의 특징 부분을 참고하십시오."
+
+[data]
+; Disk space required
+; <type of setup>= <Full install space>, <Min install space>
+
+    upd2x386full = 21000000,16960000  ; 21.0 Mb, 16.9 Mb
+    upd3x386full = 15500000,15000000  ; 15.5 Mb, 15.0 Mb
+									
+    new386full   = 21000000,16960000 ; 21.0 Mb, 16.9 Mb
+
+    netadmin     = 29000000         ; 29.0 Mb
+    netadminupd  = 29000000         ; 29.0 Mb
+    upd2x386net  = 400000           ;   .4 Mb
+    upd3x386net  = 400000           ;   .4 Mb
+    new386net    = 400000,400000    ;  .4 Mb,  .4 Mb
+									
+
+
+; Defaults used in setting up and names of a few files
+    startup   = WIN.COM
+    defdir    = C:\WINDOWS
+    shortname = 윈도우
+    welcome   = "한글 윈도우 3.1"
+    deflang   = kor
+    defxlat   = 949
+    defkeydll = nodll
+    register  = "regedit /s /u setup.reg"
+    tutor     = "wintutor.exe "
+    NetSetup  = FALSE
+    MouseDrv  = TRUE
+    Version   = "3.1.040"
+
+; This is data needed by the MS-DOS half of setup so that it can copy the
+; proper kernel and start Windows for the GUI portion of setup.
+;
+; ** MS-DOS documentation says that first byte of command line for 4a call
+; ** should be space. ==> in execcmd RHS leave first space as it is now
+[winexec]
+    execstd   = "dosx.exe "
+    execcmd   = " krnl286.exe /b /q:"
+    exechimem = "xmsmmgr.exe"
+    himemcmd  = ""
+    Krnl386   = 8:krnl386.exe
+    Krnl286   = 2:krnl286.exe
+    dosx      = 2:dosx.exe
+
+; Names of the disks Setup can prompt for.
+[disks]
+    1 =. ,"한글 윈도우 3.1 디스크 1",disk1
+    2 =. ,"한글 윈도우 3.1 디스크 2",disk2
+    3 =. ,"한글 윈도우 3.1 디스크 3",disk3
+    4 =. ,"한글 윈도우 3.1 디스크 4",disk4
+    5 =. ,"한글 윈도우 3.1 디스크 5",disk5
+    6 =. ,"한글 윈도우 3.1 디스크 6",disk6
+    7 =. ,"한글 윈도우 3.1 디스크 7",disk7
+    8 =. ,"한글 윈도우 3.1 디스크 8",disk8
+    9 =. ,"한글 윈도우 3.1 디스크 9",disk9
+    A =. ,"한글 윈도우 3.1 디스크 10",diska
+    B =. ,"한글 윈도우 3.1 디스크 11",diskb
+    C =. ,"한글 윈도우 3.1 디스크 12",diskc
+    D =. ,"한글 윈도우 3.1 디스크 13",diskd
+    E =. ,"한글 윈도우 3.1 디스크 14",diske
+
+[oemdisks]
+    Z =. ,"HP DeskJet Series v2.0 disk (from printer box or contact HP)",diskz
+
+[user]
+    9:setup.ini, noupdate
+
+[windows]
+    1:setup.hlp
+    1:setup.txt
+    1:win.src,    Net
+    1:system.src, Net
+    2:winhelp.exe
+    8:control.hlp
+    9:glossary.hlp
+    9:winhelp.hlp
+    1:wifeman.ini,  Net
+    1:imeinfo.ini, Net
+    1:hbios.com, Net
+    1:hbios.sys, Net
+    1:hfont.sys, Net
+    1:mouse.SYS, Net
+    1:mouse.com, Net
+
+[windows.system]
+    2:gdi.exe
+    2:user.exe
+    1:win.cnf
+    1:lzexpand.dll
+    8:ver.dll
+    9:winnls.dll
+    9:wifeman.dll
+    9:wifedpd.dll
+    9:ttbitmap.fod
+    3:batang.fot
+    5:dotum.fot
+    7:gulim.fot
+    7:gungsuh.fot
+    8:mj.fot
+    8:gt.fot
+    8:cffont.fod
+    8:hgpart.tbl
+
+[windows.system.386]
+    1:cpwin386.cpl
+
+[386max]
+    2:386max.vxd
+    8:windows.lod
+
+[bluemax]
+    2:bluemax.vxd
+    8:windows.lod
+
+[shell]
+    progman.exe,  "프로그램관리자"
+
+; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+: !!! The description strings should not be changed.
+; !!! Changing description strings can result in old drivers not being
+; !!! upgraded since Setup uses the description string to determine what
+; !!! driver is installed and whether a new, upgraded driver is provided
+; !!! with this version of Windows.
+; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+;
+
+[display]
+;profile = driver,         Description of driver,                           resolution,    286 grabber,    logo code,       VDD,            386grabber,   ega.sys,   logo data,    optional work section
+;
+8514     = 1:8514.drv,     "8514/a",                                        "100,120,120", 2:vgacolor.2gr, 2:vgalogo.lgo,   2:vdd8514.386,  2:vgadib.3gr,,           2:vgalogo.rle, 8514
+8514s    = 1:8514.drv,     "8514/a (작은 글꼴)",                            "100,96,96",   2:vgacolor.2gr, 2:vgalogo.lgo,   2:vdd8514.386,  2:vgadib.3gr,,           2:vgalogo.rle, 8514s
+vga      = 8:vga.drv,      "VGA",                                           "100,96,96",   2:vgacolor.2gr, 2:vgalogo.lgo,   x:*vddvga,      1:vga.3gr,,              2:vgalogo.rle
+vgamono  = 2:vgamono.drv,  "VGA (단색으로 사용)",                           "100,96,96",   2:vgamono.2gr,  2:egamono.lgo,   x:*vddvga,      2:vgadib.3gr,,           9:egamono.rle, vgamono
+svga     = 2:supervga.drv, "Super VGA (800x600, 16색)",                     "100,96,96",   2:vgacolor.2gr, 2:vgalogo.lgo,   x:*vddvga,      1:vga.3gr,,              2:vgalogo.rle
+hercules = 2:hercules.drv, "Hercules 단색",                                 "133,96,72",   1:hercules.2gr, 2:herclogo.lgo,  8:vddherc.386,  2:herc.3gr,,             2:herclogo.rle
+
+;
+; Optional sections listed in field 9 of the display secton are intrpreted as follows:
+;
+; File, Destination, .ini file, Section, LHS, RHS
+;
+; Where:    x:File      = Optional; file to be copied, may be left null.
+;           Destination = 0: for windows root or 0:system for system subdir
+;                          where file is to be copied.
+;           .ini file   = Optional; .ini file to be modified or created.
+;                          Must be included if following parameters specified.
+;           Section     = Section of .ini file to be modified.
+;           OldLine     = Optional; old line to be removed from the .ini file.
+;                          Only one occurence of the specified string is removed.
+;           NewLine     = New text line to be written to the .ini file.
+;
+
+[vgamono]
+,,system.ini,386enh,"vgamono=","vgamono=TRUE"
+
+[8514]
+,,system.ini,8514.DRV,"dpi=","dpi=120"
+
+[8514s]
+,,system.ini,8514.DRV,"dpi=","dpi=96"
+
+; copy these fonts depending on the 386 grabber being used
+[VGA.3gr]
+2:CGA40WOA.FON,2:CGA40850.FON
+2:CGA80WOA.FON,2:CGA80850.FON
+2:EGA40WOA.FON,8:EGA40850.FON
+2:EGA80WOA.FON,2:EGA80850.FON
+
+[vgadib.3gr]
+2:CGA40WOA.FON,2:CGA40850.FON
+2:CGA80WOA.FON,2:CGA80850.FON
+2:EGA40WOA.FON,8:EGA40850.FON
+2:EGA80WOA.FON,2:EGA80850.FON
+
+[HERC.3gr]
+2:HERCWOA.FON,2:HERC850.FON
+
+[keyboard.drivers]
+kbd101a = 2:kbd101a.drv
+kbd101b = 2:kbd101b.drv
+kbd103  = 2:kbd103.drv
+kbd86ks = 2:kbd86ks.drv
+kbd84us = 2:kbd84us.drv
+kbd101s = 2:kbd101s.drv
+kbd84s  = 2:kbd84s.drv
+
+[keyboard.types]
+t3s0pcxt  = "IBM PC 84키 호환 키보드(종류 1)"        ,nodll ,kbd84us
+t3s0pcxts = "IBM PC 84키 호환 키보드(종류 2)"        ,nodll ,kbd84s
+t3s0alat  = "KS 표준 86키 키보드(KSC 5852)"          ,nodll ,kbd86ks
+t4s0enha  = "IBM PC 101키 호환 키보드(종류 1)"       ,nodll ,kbd101a
+t4s0enhb  = "IBM PC 101키 호환 키보드(종류 2)"       ,nodll ,kbd101b
+t4s0enhs  = "IBM PC 101키 호환 키보드(종류 3)"       ,nodll ,kbd101s
+t4s0enhc  = "KS 표준 103키 키보드(KSC 5852)"         ,nodll ,kbd103
+
+[keyboard.tables]
+nodll  =             , "KS 종류(한국)"
+
+[codepages]
+;       Xlat Table     OEM Font      WOA Font     Description
+949 =              ,             , 2:dosapp.fon, "한글-윈도우 (949)"
+
+[pointing.device]
+;
+; Note: the VMD field may contain multiple VXD's in the form "x:*vmd,2:1vmd.386".
+;       Please note, however, that if multiple VXD's are specified in the VMD field
+;       they must be surrounded by double quotes (").
+;
+;profile =  mouse driver,   Mouse description,                 VMD,     Optional work section
+;
+lmouse   = 8:lmouse.drv,  "Logitech",                          8:lvmd.386, lmouse
+ps2mouse = 2:mouse.drv,   "마이크로소프트 또는 IBM PS/2",          x:*vmd
+nomouse  = 2:nomouse.drv, "마우스를 이용하지 않거나 다른 장치 사용", x:*vmd
+
+[lmouse]
+2:lmouse.com,0:,,,,
+
+[dos.mouse.drivers]
+mouse.sys   = B:mouse.SYS,     "MS Dos Mouse driver .SYS 버전 8.XX"
+mouse.com   = B:mouse.com,     "MS Dos Mouse driver .COM 버전 8.XX"
+
+[network]
+;Prof     = Driver, Description, HelpFile,OptFile,Optional section
+nonet     = ,"설치된 네트워크가 없음"                           ,,,nonet_stuff
+3open     = ,"3Com 3+Open"
+3share    = ,"3Com 3+Share"                                     ,,,msnet_stuff
+banyan    = ,"Banyan Vines"
+pclp      = ,"IBM PC LAN Program"
+lanman    = ,"Microsoft LAN Manager"
+msnet     = ,"Microsoft Network (또는 100% 호환)",           ,,,msnet_stuff
+novell    = ,"Novell NetWare"
+pathworks = ,"DEC PATHWORKS"
+10net     = ,"TCS 10Net"
+
+[3open.versions]
+xx010000="버전 1.X",,3open1
+00020000="2.0 기본 버전",,lmbasic
+01020000="2.0 향상된 버전",,lmenh20
+
+[banyan.versions]
+xx000000="versions below 4.0",,unsupported_net
+xx040000="versions 4.0X",,ban4
+xx041000="version 4.1",z:\vines.drv,ban41def,ban41
+
+[pathworks.versions]
+xx000000="versions below 4.0",,unsupported_net
+xx040000="version 4.0",,dec4
+xx040100="version 4.1 or higher",,dec41
+
+[pclp.versions]
+xx000000="모든 버전",,pclp
+
+[lanman.versions]
+xx000000="버전 1.X",,lmbasic
+00020000="2.0 기본 버전",,lmbasic
+01020000="2.0 향상 버전",,lmenh20
+00021000="2.1 기본 버전",,lmbasic21
+01021000="2.1 향상 버전",lanman21.drv,lmenh21nodrv,lmenh21
+
+[novell.versions]
+00000000="셸 버전 3.01 이하",,unsupported_net
+00030100="셸 버전 3.21 이하",,novell301
+00032100="셸 버전 3.21 이상",,novell321
+00032600="셸 버전 3.26 이상",,novell326
+
+[10net.versions]
+xx000000="버전 4.1 이하",,unsupported_net
+00041000="버전 4.1X",,10net41
+01041000="버전 4.1X with DCA 1M card",,10net41a
+xx042000="버전 4.2 이상",wtnet.drv,10net42def,10net42
+xx050000="버전 5.0",wtnet.drv,10net42def,10net50
+
+[nonet_stuff]
+vxd=x:*dosnet,x:*vnetbios
+
+[msnet_stuff]
+driver=1:msnet.drv
+vxd=x:*dosnet,x:*vnetbios
+system.ini=386Enh,TimerCriticalSection,10000
+system.ini=386Enh,UniqueDOSPSP,TRUE
+system.ini=386Enh,PSPIncrement,5
+
+[3open1]
+driver=1:msnet.drv
+vxd=x:*vnetbios,x:*dosnet,8:lanman10.386
+warning=2
+system.ini=386Enh,TimerCriticalSection,10000
+system.ini=386Enh,UniqueDOSPSP,TRUE
+system.ini=386Enh,PSPIncrement=5
+
+[unsupported_net]
+warning=1
+
+[ban4]
+warning=2
+driver=1:msnet.drv
+vxd=x:*vnetbios,x:*dosnet,8:baninst.386
+system.ini=386Enh,TimerCriticalSection=5000
+system.ini=386Enh,UniqueDOSPSP,TRUE
+system.ini=386Enh,PSPIncrement,5
+
+[ban41]
+;; paths other than windows disk only works for sysdir or windir...
+sysdir=z:\vines.drv,z:\vvinesd.386
+sysdir=z:\vnsapi.dll,z:\rvnsapi.dll,z:\rvines.dll,z:\ddelib.dll
+system.ini=boot,network.drv,vines.drv
+system.ini=386Enh,network,"*vnetbios,*dosnet,vvinesd.386"
+system.ini=386Enh,TimerCriticalSection,5000
+system.ini=386Enh,UniqueDOSPSP,TRUE
+system.ini=386Enh,PSPIncrement,5
+
+[ban41def]
+warning=3
+driver=1:msnet.drv
+vxd=x:*vnetbios,x:*dosnet
+system.ini=386Enh,TimerCriticalSection=5000
+system.ini=386Enh,UniqueDOSPSP,TRUE
+system.ini=386Enh,PSPIncrement,5
+
+[dec4]
+warning=2
+driver=8:pcsa.drv
+vxd=x:*dosnet,2:decnet.386,2:decnb.386
+system.ini=386Enh,TimerCriticalSection,10000
+
+[dec41]
+driver=8:pcsa.drv
+vxd=x:*dosnet,2:decnet.386,2:decnb.386
+system.ini=386Enh,TimerCriticalSection,10000
+
+[pclp]
+warning=2
+driver=1:msnet.drv
+vxd=x:*vnetbios,x:*dosnet
+system.ini=386Enh,INDOSPolling,TRUE
+
+[lmbasic]
+warning=2
+driver=1:msnet.drv
+vxd=x:*dosnet,x:*vnetbios,8:lanman10.386
+
+[lmbasic21]
+driver=1:msnet.drv
+vxd=x:*dosnet,x:*vnetbios,8:lanman10.386
+
+[lmenh20]
+warning=2
+driver=8:lanman.drv
+vxd=x:*vnetbios,x:*dosnet
+sysdir=8:netapi20.dll,2:pmspl20.dll
+update=9:lanman.hlp,9:winpopup.exe,9:winpopup.hlp
+
+[lmenh21nodrv]
+warning=3
+driver=1:msnet.drv
+vxd=x:*dosnet,x:*vnetbios
+
+[lmenh21]
+warning=2
+system.ini=boot,network.drv,lanman21.drv
+vxd=x:*vnetbios,x:*dosnet
+update=9:winpopup.exe,9:winpopup.hlp
+
+[novell301]
+warning=2
+driver=8:netware.drv
+vxd=x:*vnetbios,8:vnetware.386,8:vipx.386
+sysdir=9:netware.hlp,9:nwpopup.exe
+sysdir=9:ipx.obj,9:netx.com
+sysdir=9:ipxodi.com,9:lsl.com
+sysdir=9:tbmi2.com
+win.ini=windows,load,nwpopup.exe
+system.ini=386Enh,OverlappedIO=off
+
+[novell321]
+warning=2
+driver=8:netware.drv
+vxd=x:*vnetbios,8:vnetware.386,8:vipx.386
+sysdir=9:netware.hlp,9:nwpopup.exe
+sysdir=9:ipx.obj,9:netx.com
+sysdir=9:ipxodi.com,9:lsl.com
+sysdir=9:tbmi2.com
+win.ini=windows,load,nwpopup.exe
+system.ini=386Enh,OverlappedIO=off
+
+[novell326]
+driver=8:netware.drv
+vxd=x:*vnetbios,8:vnetware.386,8:vipx.386
+sysdir=9:netware.hlp,9:nwpopup.exe
+sysdir=9:ipx.obj,9:netx.com
+sysdir=9:ipxodi.com,9:lsl.com
+sysdir=9:tbmi2.com
+win.ini=windows,load,nwpopup.exe
+system.ini=386Enh,OverlappedIO=off
+
+[10net41]
+warning=2
+driver=1:msnet.drv
+vxd=x:*vnetbios,x:*dosnet
+system.ini=386Enh,TimerCriticalSection,10000
+
+[10net41a]
+warning=2
+driver=1:msnet.drv
+vxd=x:*vnetbios,x:*dosnet
+system.ini=386Enh,TimerCriticalSection,10000
+system.ini=386Enh,UniqueDOSPSP,TRUE
+system.ini=386Enh,PSPIncrement,5
+system.ini=386Enh,INDOSPolling,TRUE
+
+[10net42]
+system.ini=boot,network.drv,wtnet.drv
+vxd=x:*vnetbios,x:*dosnet
+system.ini=386Enh,TimerCriticalSection,10000
+windir=10net.ini
+
+[10net42def]
+warning=3
+driver=1:msnet.drv
+vxd=x:*dosnet,x:*vnetbios
+system.ini=386Enh,TimerCriticalSection,2000
+
+[10net50]
+warning=3
+system.ini=boot,network.drv,wtnet.drv
+vxd=x:*dosnet,x:*vnetbios
+system.ini=386Enh,TimerCriticalSection,2000
+windir=10net.ini
+
+[sysfonts]
+2:egasys.fon,"EGA (640x350) resolution System Font", "133,96,72"
+2:vgasys.fon,"VGA (640x480) resolution System Font", "100,96,96"
+2:8514sys.fon,"8514/a (1024x768) resolution System Font", "100,120,120"
+
+[fixedfonts]
+1:egafix.fon,"EGA (640x350) resolution Fixed System Font", "133,96,72"
+2:vgafix.fon,"VGA (640x480) resolution Fixed System Font", "100,96,96"
+2:8514fix.fon,"8514/a (1024x768) resolution Fixed System Font",  "100,120,120"
+
+[oemfonts]
+2:egaoem.fon,"EGA (640x350) resolution Terminal Font (USA/Europe)", "133,96,72",1
+2:vgaoem.fon,"VGA (640x480) resolution Terminal Font (USA/Europe)", "100,96,96",1
+2:8514oem.fon,"8514/a (1024x768) resolution Terminal Font (USA/Europe)", "100,120,120",1
+
+;   The win.copy section is a list of files or sections to copy to the WINDOWS
+;   directoy.
+;
+;   FORMAT      from,to
+;
+;   IE
+;       1:foo.txt,  0:        copy foo.txt from disk 1 to the windows directory
+;       #386,       0:system  copy all files in the 386 SECTION to the
+;
+;
+[win.copy]
+; copy this section for setup on 286 machines
+   #net,       0:
+   #win.shell, 0:
+   #win.other, 0:system
+
+[win.copy.net]
+; copy this section for network setup on 286 machines
+   #net,              0:
+
+[win.copy.net.win386]
+; copy this section for network setup on 386 machines
+   #net,       0:
+
+[win.copy.win386]
+; copy this section for full setup on 386 machines
+   #net,       0:
+   #win.shell, 0:
+   #pwin386,   0:system
+   #win.other, 0:system
+
+[net]
+   A:CONTROL.SRC,    "한글 윈도우 사용자 파일"
+   A:WINVER
+
+[win.devices]
+; These devices will be copied on all machines
+   A:HIMEM.SYS,      "XMS 메모리 관리자"
+   A:SMARTDRV.EXE,   "디스크 캐시 프로그램"
+   A:RAMDRIVE.SYS,   "RAM 드라이브 프로그램"
+
+[win.devices.win386]
+; These devices will be copied on 386 machines only
+   A:HIMEM.SYS,      "XMS 메모리 관리자"
+   A:EMM386.EXE,     "LIM 중첩확장 메모리 관리자"
+   A:SMARTDRV.EXE,   "디스크 캐시 프로그램"
+   A:RAMDRIVE.SYS,   "RAM 드라이브 프로그램"
+
+[win.other]
+   B:WINOLDAP.MOD,   "한글 윈도우 제어기"
+   B:WIN87EM.DLL
+   B:SYSEDIT.EXE
+   B:COMMDLG.DLL
+   B:DDEML.DLL
+   B:OLECLI.DLL
+   B:OLESVR.DLL
+   B:DSWAP.EXE
+   B:WSWAP.EXE
+   B:SETUP.REG
+   B:SHELL.DLL
+   B:MAIN.CPL
+   B:MIDIMAP.DRV
+   B:MIDIMAP.CFG
+   B:SND.CPL
+   B:DRIVERS.CPL
+   B:MMSYSTEM.DLL
+   B:MMTASK.TSK
+   B:TIMER.DRV
+   B:MCISEQ.DRV
+   B:MCIWAVE.DRV
+   B:CONTROL.INF
+   B:APPS.INF
+   B:TOOLHELP.DLL
+   B:IME.CPL
+
+[win.shell]
+   A:PROGMAN.EXE,    "프로그램관리자"
+   A:TASKMAN.EXE,    "작업관리자"
+   A:WINFILE.EXE,    "파일관리자"
+   A:CLIPBRD.EXE,    "클립보드 표시기"
+   A:CONTROL.EXE,    "제어판"
+   A:PIFEDIT.EXE,    "PIF 편집기"
+   A:REGEDIT.EXE,    "등록 데이터베이스"
+   A:PRINTMAN.EXE,   "인쇄관리자"
+   A:MSD.EXE,        "진단 프로그램"
+   A:drwatson.exe
+   9:WRITE.EXE,      "문서작성기"
+   9:WRITE.HLP,      "문서작성기 도움말"
+   9:moricons.dll    "아이콘"
+
+[pwin386]
+   B:WINOA386.MOD,   "386 확장모드 파일"
+   A:WIN386.PS2
+   B:WIN386.EXE
+   B:VTDAPI.386
+
+[DelFiles]
+;Statically initialize the list of files that will be DELETED during the
+;  3.0 to 3.1 up-grade process. Add or remove items from this list at will,
+;  (Wildcards accepted in list)
+; The first files in the list are deleted from Windows system dir(local setup).
+; Nb : Note that DelFiles section always is processed before RenFiles section.
+   tmsr?.fon
+   helv?.fon
+   myoungjo.fon
+   gothic.fon
+   *.hgq
+   swapfile.exe
+   kernel.exe
+   pmspl.dll
+   netapi.dll
+   midi.cpl
+   _default.pif
+; All files in the list AFTER this point will be deleted from Windows dir.
+; WARNING: The "..\" is needed, the code depends on it!!!
+   ..\setup.inf
+   shell.dll
+   olecli.dll
+   olesvr.dll
+   commdlg.dll
+   ver.dll
+   toolhelp.dll
+   *.pcl
+   3270.txt
+   networks.txt
+   printers.txt
+   readme.txt
+   sysini?.txt
+   winini?.txt
+   DRWATSON.EXE
+; Various names for old Windows SETUP.EXE
+   SETUP.EXE
+   INSTALL.EXE
+   ASETTA.EXE
+   CONFIG.EXE
+   INSTALAR.EXE
+   KURMA.EXE
+; Old IMEs   
+   ime*.exe
+   ..\ime*.exe
+   ..\imeinfo.ini
+
+[RenFiles]
+; Similar section but for file renaming to create .bak if needed
+   MIDIMAP.CFG,MIDIMAP.OLD
+   ADLIB.DRV,MSADLIB.DRV
+   WIFEMAN.INI,WIFEMAN.OLD
+
+
+; The win.apps, win.games, win.scrs, win.bmps, and win.readme sections are
+; all formatted as described below.
+;
+; X:FileName,      Description,     FileSize,   Profile String
+;
+; Where profile string is used by setup.exe to "lookup" the item in the
+; appropiate progman groups section to determine if and how the item is
+; to be added to a Program manager group via DDE. The profile string is
+; also used to "lookup" and needed dependent files in the [win.dependents]
+; section.
+;
+[win.apps]
+   A:CALC.EXE,     "계산기"                    ,  43728, calc
+   A:CALENDAR.EXE, "일정표"                    ,  62864, calendar
+   9:CARDFILE.EXE, "카드파일"                  ,  93696, cardfile
+   9:CLOCK.EXE,    "시계"                      ,  17664, clock
+   9:NOTEPAD.EXE,  "메모장"                    ,  32304, notepad
+   A:PBRUSH.EXE,   "페인트"                    , 189312, pbrush
+   A:TERMINAL.EXE, "터미널"                    , 150000, terminal
+   A:CALC.HLP,     "계산기 도움말"             ,  18077
+   A:CALENDAR.HLP, "일정표 도움말"             ,  20603
+   9:CARDFILE.HLP, "카드파일 도움말"           ,  25160
+   9:NOTEPAD.HLP,  "메모장 도움말"             ,  13947
+   9:PBRUSH.HLP,   "페인트 도움말"             ,  40815
+   9:RECORDER.EXE, "레코더"                    ,  39184, recorder
+   9:RECORDER.HLP, "레코더 도움말"             ,  18504
+   A:TERMINAL.HLP, "터미널 도움말"             ,  36243
+   A:PACKAGER.EXE, "개체 포장기"               ,  78384, packager
+   9:PACKAGER.HLP, "개체 포장기 도움말"        ,  22528
+   9:CHARMAP.EXE,  "문자표"                    ,  37888, charmap
+   A:CHARMAP.HLP,  "문자표 도움말"             ,  10711
+   A:MPLAYER.EXE,  "매체 재생기"               ,  35280, mplayer
+   9:MPLAYER.HLP,  "매체 재생기 도움말"        ,  12846
+   9:SOUNDREC.EXE, "녹음기"                    ,  51572, soundrec
+   9:SOUNDREC.HLP, "녹음기 도움말"             ,  17422
+   A:CLIPBRD.HLP,  "클립보드 표시기 도움말"    ,  12983
+   A:DRWATSON.EXE, "분석가 시스템 유틸리티"    ,  27088
+   A:PIFEDIT.HLP,  "PIF 편집기 도움말"         ,  36393
+   A:PRINTMAN.HLP, "인쇄관리자 도움말"         ,  41002
+   A:PROGMAN.HLP,  "프로그램관리자 도움말"     ,  31757
+   A:REGEDIT.HLP,  "등록 도움말"               ,  22608
+   A:REGEDITV.HLP, "등록 고급 도움말"          ,  15924
+   A:WINFILE.HLP,  "파일관리자 도움말"         ,  76493
+   9:WINTUTOR.EXE, "한글 윈도우 자습서"        , 123392, wintutor
+   9:EXPAND.EXE,   "파일 확장 유틸리티"        ,  15737
+   diskspace=1472109
+
+[win.dependents]
+pbrush   = 9:PBRUSH.DLL
+recorder = 9:RECORDER.DLL
+wintutor = 9:WINTUTOR.DAT
+
+[win.games]
+   A:SOL.EXE,      "카드놀이"            , 180944, sol
+   9:WINMINE.EXE,  "지뢰찾기"            ,  27888, winmine
+   A:SOL.HLP,      "카드놀이 도움말"     ,  13757
+   A:WINMINE.HLP,  "지뢰찾기 도움말"     ,  12906
+   diskspace=235495
+
+[win.scrs]
+   9:SCRNSAVE.SCR, "기본 화면 보호기"         ,   5424
+   9:SSMARQUE.SCR, "Marquee 화면 보호기"      ,  17312
+   9:SSMYST.SCR,   "Mystify 화면 보호기"      ,  19600
+   A:SSSTARS.SCR,  "Stars 화면 보호기"        ,  17728
+   9:ssflywin.scr, "Flying Windows 화면 보호기",  16352
+   diskspace=76416
+
+[win.bmps]
+   9:256COLOR.BMP, "256-Color Wallpaper"      ,   5078
+   A:ARCADE.BMP,   "Arcade Wallpaper"         ,    630
+   A:ARCHES.BMP,   "Arches Wallpaper"         ,  10358
+   9:ARGYLE.BMP,   "Argyle Wallpaper"         ,    630
+   A:CARS.BMP,     "Cars Wallpaper"           ,    630
+   A:CASTLE.BMP,   "Castle Wallpaper"         ,    778
+   A:CHITZ.BMP,    "Chitz Wallpaper"          ,  19918
+   A:EGYPT.BMP,    "Egypt Wallpaper"          ,    630
+   9:FLOCK.BMP,    "Flock Wallpaper"          ,   1630
+   A:HONEY.BMP,    "Honey Wallpaper"          ,    854
+   A:LEAVES.BMP,   "Leaves Wallpaper"         ,  15118
+   A:MARBLE.BMP,   "Marble Wallpaper"         ,  27646
+   9:MUN.BMP,      "MUN Wallpaper"            ,  26678
+   A:RIVETS.BMP,   "Rivets Wallpaper"         ,    630
+   A:REDBRICK.BMP, "Red Brick Wallpaper"      ,    630
+   A:SQUARES.BMP,  "Squares Wallpaper"        ,    630
+   9:TAEGEUK.BMP,  "TAEGEUK Wallpaper"        ,  12918
+   A:TARTAN.BMP,   "Tartan Wallpaper"         ,  32886
+   9:THATCH.BMP,   "Thatch Wallpaper"         ,    598
+   A:WINLOGO.BMP,  "Windows Logo Wallpaper"   ,  38518
+   A:ZIGZAG.BMP,   "Zigzag Wallpaper"         ,    630
+   A:ding.wav,     "Ding Sound"               ,  11598
+   9:chord.wav,    "Chord Sound"              ,  24982
+   9:chimes.wav,   "Chimes Sound"             ,  15920
+   9:tada.wav,     "Trumpet Sound"            ,  27804
+   A:canyon.mid,   "Canyon MIDI Song"         ,  33883
+   diskspace=312205
+
+[win.readme]
+   9:readme.wri,   "일반 정보"                ,  44800, readme
+   9:networks.wri, "네트워크 정보"            ,  47616
+   9:winini.wri,   "Win.ini 정보"             ,  21760
+   9:sysini.wri,   "System.ini 정보"          ,  41216
+   diskspace=155392
+
+; The [*.groups] sections maps a group section to the group name used in
+; Program Manager.
+;
+; Section Name = Progman group name, Min/Max switch. ( 1 = Max, nothing = Min).
+;
+; This section is used for upgrading from 3.X to 3.1.
+[new.groups]
+group7=기본프로그램,1
+group1=시작프로그램
+group2=보조프로그램
+group6=게임
+
+; This section is for new install.
+[progman.groups]
+group3=기본프로그램,1
+group4=보조프로그램
+group5=게임
+group1=시작프로그램
+
+; Progman DDE control section. This section controls the progman DDE and defines which
+; .exe's will be added to which groups. The [progman.groups] sections lists section
+; names that each describe the contents of that group.
+;
+; Description string,  .EXE name, Icon extraction .EXE, Icon extraction index, profile
+;
+; If the profile field is left NULL, the item will always be added to the group. Otherwise
+; the item will only be added if it was installed via the partial install dlg.
+;
+;
+; NOTE: If EXE name is NULL item will be deleted from the group if it exists there.
+;
+
+[group3]
+"파일관리자",       WINFILE.EXE
+"제어판",           CONTROL.EXE
+"인쇄관리자",       PRINTMAN.EXE
+"클립보드 표시기",   CLIPBRD.EXE
+"한글 MS-DOS",      DOSPRMPT.PIF, PROGMAN.EXE, 9
+"설치관리자",       SETUP.EXE
+"PIF 편집기",       PIFEDIT.EXE
+"윈도우 정보",      README.WRI,,,                              readme
+
+[group4]
+"문서작성기",       WRITE.EXE
+"페인트",           PBRUSH.EXE,,,                              pbrush
+"터미널",           TERMINAL.EXE,,,                            terminal
+"메모장",           NOTEPAD.EXE,,,                             notepad
+"레코더",           RECORDER.EXE,,,                            recorder
+"카드파일",         CARDFILE.EXE,,,                            cardfile
+"일정표",           CALENDAR.EXE,,,                            calendar
+"계산기",           CALC.EXE,,,                                calc
+"시계",             CLOCK.EXE,,,                               clock
+"개체 포장기",      PACKAGER.EXE,,,                            packager
+"문자표",           CHARMAP.EXE,,,                             charmap
+"매체 재생기",      MPLAYER.EXE,,,                             mplayer
+"녹음기",           SOUNDREC.EXE,,,                            soundrec
+
+[group5]
+"카드놀이",         SOL.EXE,,,                                 sol
+"지뢰찾기",         WINMINE.EXE,,,                             winmine
+
+[group1]
+"분석가"
+
+[group2]
+"개체 포장기",      PACKAGER.EXE,,,                            packager
+"문자표",           CHARMAP.EXE,,,                             charmap
+"매체 재생기",      MPLAYER.EXE,,,                             mplayer
+"녹음기",           SOUNDREC.EXE,,,                            soundrec
+"PIF 편집기"
+"문서작성기",       WRITE.EXE
+"한글입력 정보"
+
+[group6]
+"카드놀이",         SOL.EXE,,,                                 sol
+"지뢰찾기",         WINMINE.EXE,,,                             winmine
+
+[group7]
+"PIF 편집기",       PIFEDIT.EXE
+"Read Me"
+"윈도우 정보"
+"DOS Prompt"
+"한글 MS-DOS",      DOSPRMPT.PIF, PROGMAN.EXE, 9
+"윈도우 정보",      README.WRI,,,                              readme
+"자습서"
+
+[fonts]
+   B:SSERIFB.FON, "MS Sans Serif 8,10,12,14,18,24 (EGA res)", "133,96,72"
+   B:SSERIFE.FON, "MS Sans Serif 8,10,12,14,18,24 (VGA res)", "100,96,96"
+   B:SSERIFF.FON, "MS Sans Serif 8,10,12,14,18,24 (8514/a res)", "100,120,120"
+
+   C:COURB.FON, "Courier 8,10,12,15 (EGA res)", "133,96,72"
+   B:COURE.FON, "Courier 10,12,15 (VGA res)", "100,96,96"
+   B:COURF.FON, "Courier 10,12,15 (8514/a res)", "100,120,120"
+
+   C:SERIFB.FON, "MS Serif 8,10,12,14,18,24 (EGA res)", "133,96,72"
+   C:SERIFE.FON, "MS Serif 8,10,12,14,18,24 (VGA res)", "100,96,96"
+   B:SERIFF.FON, "MS Serif 8,10,12,14,18,24 (8514/a res)", "100,120,120"
+
+   B:ARIALB.FON, "Arial 8,10 (EGA res)", "133,96,72"
+   C:TIMESB.FON, "Times New Roman 8,10 (EGA res)", "133,96,72"
+
+   C:SYMBOLB.FON, "Symbol 8,10,12,14,18,24 (EGA res)", "133,96,72"
+   C:SYMBOLE.FON, "Symbol 8,10,12,14,18,24 (VGA res)", "100,96,96"
+   B:SYMBOLF.FON, "Symbol 8,10,12,14,18,24 (8514/a res)", "100,120,120"
+
+   B:SMALLB.FON, "Small Fonts (EGA res)", "133,96,72"
+   B:SMALLE.FON, "Small Fonts (VGA res)", "100,96,96"
+   B:SMALLF.FON, "Small Fonts (8514/a res)", "100,120,120"
+
+   C:ROMAN.FON, "Roman (Plotter)",   "CONTINUOUSSCALING"
+   C:SCRIPT.FON, "Script (Plotter)", "CONTINUOUSSCALING"
+   B:MODERN.FON, "Modern (Plotter)", "CONTINUOUSSCALING"
+
+[ttfonts]
+;
+;Font Header file, Description string,       Font file,     FontFamily/Flags
+;
+; Flags:  0000 = Normal weighted font.
+;         0100 = Bolded font.
+;         1000 = Italic font.
+; NOTE: Flags not currently used.
+;
+; NOTE: The first letter of each word in the font desctiption string needs
+;       to be capitalized.
+;
+C:ARIAL.FOT,   "Arial (TrueType)",                       C:arial.ttf,   ""
+C:ARIALBD.FOT, "Arial Bold (TrueType)",                  C:arialbd.ttf,  "Arial0100"
+C:ARIALBI.FOT, "Arial Bold Italic (TrueType)",           C:arialbi.ttf, "Arial1100"
+C:ARIALI.FOT,  "Arial Italic (TrueType)",                C:ariali.ttf,  "Arial1000"
+C:COUR.FOT,    "Courier New (TrueType)",                 C:cour.ttf,    ""
+C:COURBD.FOT,  "Courier New Bold (TrueType)",            C:courbd.ttf,  "Courier0100"
+C:COURBI.FOT,  "Courier New Bold Italic (TrueType)",     C:courbi.ttf,  "Courier1100"
+C:COURI.FOT,   "Courier New Italic (TrueType)",          C:couri.ttf,   "Courier1000"
+C:TIMES.FOT,   "Times New Roman (TrueType)",             C:times.ttf,   ""
+C:TIMESBD.FOT, "Times New Roman Bold (TrueType)",        C:timesbd.ttf, "Times New Roman0100"
+C:TIMESBI.FOT, "Times New Roman Bold Italic (TrueType)", C:timesbi.ttf, "Times New Roman1100"
+C:TIMESI.FOT,  "Times New Roman Italic (TrueType)",      C:timesi.ttf,  "Times New Roman1000"
+C:SYMBOL.FOT,  "Symbol (TrueType)",                      C:symbol.ttf,  ""
+C:WINGDING.FOT,"WingDings (TrueType)",                   C:wingding.ttf,""
+
+[IME]
+IMEMSCH2  = "2벌식 한글/한자 변환 프로그램(자소단위)", 1.0, ""
+IMEMSCH   = "2벌식 한글/한자 변환 프로그램(문자단위)", 1.0, ""
+IMEMSCH3  = "3벌식(공자판) 한글/한자 변환 프로그램", 1.0, ""
+IMEMS390  = "3벌식(3-90자판) 한글/한자 변환 프로그램", 1.0, """
+
+[IMEMSCH.files]
+IMEMSCH.EXE=2:imemsch.exe, system
+
+[IMEMSCH2.files]
+IMEMSCH2.EXE=3:imemsch2.exe, system
+
+[IMEMSCH3.files]
+IMEMSCH3.EXE=3:imemsch3.exe, system
+
+[IMEMS390.files]
+IMEMS390.EXE=3:imems390.exe, system
+
+
+; If any of these drivers are found in the config.sys file, Setup removes them.
+[compatibility]
+icache.sys   
+ibmcache.sys 
+cache.sys    
+cache.exe    
+mcache.sys   
+fast512.sys
+
+; Known TSRs and drivers which may result in a hang or crash
+; during execution of Setup or Windows.
+;
+; filename = description string
+[incompTSR1]
+ep.exe      = "Norton Desktop/Windows Erase Protect TSR"
+qmaps.sys   = "QMAPS Memory Manager"
+qcache.exe  = "386 Max Disk Cache Utility"
+cache.exe   = "Disk Cache Utility"
+flash.exe   = "Flash Disk Cache Utility"
+hyper386.exe= "Hyper Disk Cache Utility"
+hyperdkx.exe= "Hyper Disk Cache Utility"
+hyper286.exe= "Hyper Disk Cache Utility"
+hyperdke.exe= "Hyper Disk Cache Utility"
+hyperdkc.exe= "Hyper Disk Cache Utility"
+ncache.exe  = "Norton Disk Cache Utility"
+pc-kwik.exe = "PC-Kwik Disk Cache Utility"
+pc-cache.com= "PC Tools Disk Cache Utility"
+superpck.exe= "Super PC-Kwik Disk Cache Utility"
+vdisk.sys   = "IBM RAM Disk Utility" 
+allemm4.sys="All Charge 386"
+anarkey.com="Anarkey"
+vsafe.sys = "Central Point Anti-Virus"
+vsafe.com = "Central Point Anti-Virus TSR"
+vdefend.sys="PC Tools VDefend"
+vdefend.com="PC Tools VDefend"
+kbflow.exe="KBFlow TSR by Artisoft"
+s-ice.exe="SoftIce"
+desktop.exe="PC Tools Desktop TSR"
+sk2.exe="Sidekick version 2.0"
+sk.com="Sidekick version 1.0"
+skplus.exe="Sidekick Plus"
+print.exe="MS-DOS PRINT Utility"
+pyro.exe="Pyro! Screen Saver"
+xgaaidos.sys="8514 emulation driver "
+asplogin.exe="ASP Integrity Toolkit"
+lsallow.exe="Lansight Network Utilities TSR"
+lansel.exe="Lansight Network Utilities TSR"
+vaccine.exe="Vaccine Antivirus Program"
+newspace.exe="Newspace Disk Compression Utility"
+newres.exe="Newspace Disk Compression Utility"
+tscsi.sys="Trantor T100  SCSI driver"
+pcpanel.exe="Lasertools Printer Control Panel"
+hpemm386.sys = "HP Expanded Memory Manager"
+hpemm486.sys = "HP Expanded Memory Manager"
+ramtype.sys  = "Ramtype Utility"
+iemm.sys     = "Memory Manager"
+ilim386.sys  = "Intel Expanded Memory Emulator"
+cmdedit.com  = "Command Line Editor"
+hpmm.sys     = "HP Memory Manager"
+ced.exe      = "PCED Command Line Editor"
+ced.com      = "CED Command Line Editor"
+umbpro.sys   = "UMB Pro Memory Manager"
+rm386.sys    = "NetRoom Memory Manager"
+
+; Known TSRs and device drivers which can(!) potentially cause problems
+; if running during Setup or Windows
+;
+; filename = description string
+[incompTSR2]
+ndosedit.com  = "Command Line Editor"
+doscue.com="DOSCUE Command Line Editor"
+datamon.exe="PC Tools Datamon"
+subst.exe="MS-DOS SUBST Utility"
+join.exe="MS-DOS JOIN Utility"
+viralert.sys="Data Physician Plus TSR"
+graphics.com="MS-DOS GRAPHICS Utility"
+le.com="Le Menu Menuing Package"
+assign.com="MS-DOS ASSIGN Utility"
+append.com="MS-DOS APPEND Utility"
+diskmon.exe="Norton Disk Monitoring TSR"
+dubldisk.sys="Double Disk Data Compression Utility"
+pa.exe = "Printer Assist"
+speedfxr.com = "Speedfxr"
+pcsxmaem.sys = "pcsxmaem Utility"
+xmaem.sys    = "xmaem Utility"
+cubitr.exe   = "Cubit"
+
+[block_devices]
+tscsi.sys
+tcscsi.sys
+atdosxl.sys
+dmdrvr.bin
+drdrive.sys
+
+[Installable.Drivers]
+; key         = filename,       type(s),     description, VxD(s), Default Params
+msadlib       = 9:msadlib.drv,  "MIDI",      "Ad Lib", 9:vadlibd.386,
+lapc1         = 9:mpu401.drv,   "MIDI",      "Roland LAPC1",,
+midimapper    = B:midimap.drv,  "MidiMapper", "MIDI Mapper",,
+mpu401        = 9:mpu401.drv,   "MIDI",      "Roland MPU-401",,
+sequencer     = B:mciseq.drv,   "Sequencer", "[MCI] MIDI 시퀀서",,
+soundblaster  = 9:sndblst.drv,  "Wave,MIDI", "Creative Labs Sound Blaster 1.0", 9:vsbd.386,, msadlib
+soundblaster2 = 9:sndblst2.drv, "Wave,MIDI", "Creative Labs Sound Blaster 1.5", 9:vsbd.386,, msadlib
+timer         = B:timer.drv,    "Timer",     "Timer", B:vtdapi.386,
+thunder       = 9:sndblst2.drv, "Wave", "Media Vision Thunder Board", 9:vsbd.386,, msadlib
+wave          = B:mciwave.drv,  "WaveAudio", "[MCI] Sound",, "4"
+cdaudio       = B:mcicda.drv,   "CDAudio",   "[MCI] CD Audio",,
+
+; This section translates Windows 3.0 OEMSETUP.INF entries to their 3.1
+; equivalents. The disk names should be the first entries in the list.
+
+[translate]
+WinDiskName=26,"Microsoft Windows 3.0 Disk"
+WinDiskName=14,"Windows Disk #"
+cti.lgo=2:herclogo.lgo
+herclogo.rle=2:herclogo.rle
+mouse.drv=2:mouse.drv
+kbd101a=2:kbd101a.drv
+kbd101b=2:kbd101b.drv
+kbd103=2:kbd103.drv
+kbd86ks=2:kbd86ks.drv
+kbd84us=2:kbd84us.drv
+vgacolor.gr2=2:vgacolor.2gr
+vgalogo.lgo=2:vgalogo.lgo
+vgalogo.rle=2:vgalogo.rle
+rgdi.lgo=2:vgalogo.lgo
+rgdi.rle=2:vgalogo.rle
+cga40woa.fon=2:cga40woa.fon
+cga40850.fon=2:cga40850.fon
+cga80woa.fon=2:cga80woa.fon
+cga80850.fon=2:cga80850.fon
+ega40woa.fon=2:ega40woa.fon
+ega40850.fon=8:ega40850.fon
+ega80woa.fon=2:ega80woa.fon
+ega80850.fon=2:ega80850.fon
+vgasys.fon=2:vgasys.fon
+vgafix.fon=2:vgafix.fon
+vgaoem.fon=2:vgaoem.fon
+8514sys.fon=2:8514sys.fon
+8514fix.fon=2:8514fix.fon
+8514oem.fon=2:8514oem.fon
+helvb.fon=B:sserifb.fon
+helve.fon=B:sserife.fon
+helvf.fon=B:sseriff.fon
+courb.fon=C:courb.fon
+coure.fon=B:coure.fon
+courf.fon=B:courf.fon
+tmsrb.fon=C:serifb.fon
+tmsre.fon=C:serife.fon
+tmsrf.fon=B:seriff.fon
+symbolb.fon=C:symbolb.fon
+symbole.fon=C:symbole.fon
+symbolf.fon=B:symbolf.fon
+roman.fon=C:roman.fon
+script.fon=C:script.fon
+modern.fon=B:modern.fon
+win.cnf=1:win.cnf
+
+; Used to update files that already exist on the disk
+;
+[Update.Files]
+0:system,9:sndblst.drv
+0:system,9:sndblst2.drv
+0:system,9:mpu401.drv
+0:system,9:msadlib.drv
+0:system,B:vtdapi.386
+0:system,9:vsbd.386
+0:system,9:vadlibd.386
+0:system,B:mcicda.drv
+
+; Used to update dependents of files in the [Update.Files] section.
+;
+[Update.Dependents]
+msadlib.drv = 9:vadlibd.386
+sndblst.drv = 9:vsbd.386
+sndblst2.drv = 9:vsbd.386
+
+; This section is processed by both the DOS and WINDOWS portions of setup
+; for temporarily renaming profile strings during setup. THE RENAME
+; OPERATION WILL ONLY TAKE PLACE IF THE ORIGINAL PROFILE STRING EXISTS AND HAS
+; A RIGHT HAND SIDE STRING.
+;
+; .ini file,  section name, temporary profile name, Original profile name.
+;
+[ini.upd.patches]
+  system.ini, Boot,    "olddrivers"    ,"drivers"
+  win.ini   , Desktop, "oldwallpaper"  ,"wallpaper"
+  system.ini, Boot,    "oldtaskman"    ,"taskman.exe"
+  system.ini, Boot,    "oldshell"      ,"shell"
+
+; Used by the windows half to shrink the memory needed to hold this pig.
+;
+[blowaway]
+   this line needed
+
+[ini.upd.31]
+;
+; WARNING: This section only works on win.ini or system.ini !!
+;
+; .ini file,  section,  old line to be replaced,  new line,  rename operater.
+;
+; If the "old line to be replaced" field is empty, setup will assume that
+; the new line is to be added. The rename operater tells setup to retain the RHS
+; of the profile. This is used as a renaming mechanism during upgrades.
+; Nb : Simple string substitution is implemented :
+;     ?P means any valid MS-DOS path
+;
+  system.ini, Boot,                               ,   "taskman.exe="
+  system.ini, mci,     "waveaudio="               ,   "WaveAudio=mciwave.drv"
+  system.ini, mci,     "sequencer="               ,   "Sequencer=mciseq.drv"
+  system.ini, mci,     "cdaudio="                 ,   "CDAudio=mcicda.drv"                      
+  system.ini, drivers,                            ,   "timer=timer.drv"
+  system.ini, drivers,         "midimapper="      ,   "midimapper=midimap.drv"
+  system.ini, drivers, "midi=adlib.drv"           ,   "midi=msadlib.drv"          ,rename
+  system.ini, drivers, "midi1=adlib.drv"          ,   "midi1=msadlib.drv"         ,rename
+  system.ini, drivers, "midi2=adlib.drv"          ,   "midi2=msadlib.drv"         ,rename
+  system.ini, drivers, "midi3=adlib.drv"          ,   "midi3=msadlib.drv"         ,rename
+  system.ini, drivers, "midi4=adlib.drv"          ,   "midi4=msadlib.drv"         ,rename
+  system.ini, 386Enh,       "keyboard=?Pbpvkd.386",
+  system.ini, 386Enh,          "keyboard="        ,   "keyboard=*vkd"             ,noclobber
+  system.ini, 386Enh,          "device=vpicda.386",   "device=*vpicd"
+  system.ini, 386Enh,          "device=*vhd"      ,   "device=*blockdev"
+  system.ini, 386Enh,          "device=*vpd"      ,
+  system.ini, 386Enh,          "device=vdmad.386" ,   "device=*vdmad"
+  system.ini, 386Enh,          "device=vdmadx.386",   "device=*vdmad"
+  system.ini, 386Enh,                             ,   "device=*pagefile"
+  system.ini, 386Enh,       "device=?Pvtdapi.386" ,   "device=vtdapi.386"
+  system.ini, 386Enh,                             ,   "local=BILING$"
+  system.ini, 386Enh,                             ,   "local=$IBMADSP"
+  system.ini, 386Enh,                             ,   "local=KKCFUNC$"
+;;; line for Beta build version
+  system.ini, 386Enh,       "device=vhbiosd.386"  ,
+;;;
+  system.ini, 386Enh,                             ,   "device=*vhbiosd"
+  system.ini, NonWindowsApp,"localtsrs="          ,   "localtsrs=dosedit,ced"  ,noclobber
+  win.ini   , Sounds,  "SystemDefault="           ,   "SystemDefault=ding.wav, 기본음"      ,noclobber
+  win.ini   , Sounds,  "SystemExclamation="       ,   "SystemExclamation=chord.wav, 감탄시"  ,noclobber
+  win.ini   , Sounds,  "SystemStart="             ,   "SystemStart=tada.wav, 윈도우 시작시"       ,noclobber
+  win.ini   , Sounds,  "SystemExit="              ,   "SystemExit=chimes.wav, 윈도우 종료시"       ,noclobber
+  win.ini   , Sounds,  "SystemHand="              ,   "SystemHand=chord.wav, 치명적인 오류시"       ,noclobber
+  win.ini   , Sounds,  "SystemQuestion="          ,   "SystemQuestion=chord.wav, 질문시"        ,noclobber
+  win.ini   , Sounds,  "SystemAsterisk="          ,   "SystemAsterisk=chord.wav, 별표 표시"        ,noclobber
+  win.ini   , "mci extensions",                   ,   "wav=waveaudio"
+  win.ini   , "mci extensions",                   ,   "mid=sequencer"
+  win.ini   , "mci extensions",                   ,   "rmi=sequencer"
+  win.ini   , FontSubstitutes,                    ,   "Helv=MS Sans Serif"
+  win.ini   , FontSubstitutes,                    ,   "Tms Rmn=MS Serif"
+  win.ini   , FontSubstitutes, "Courier=Courier New" ,
+  win.ini   , FontSubstitutes,                    ,   "Times=Times New Roman"
+  win.ini   , FontSubstitutes,                    ,   "Helvetica=Arial"
+  win.ini   , FontSubstitutes,                    ,   "Fences=Fences Plain"
+  win.ini   , FontSubstitutes,                    ,   "MT Extra=MT Extra Plain"
+  win.ini   , "Microsoft Word 2.0", "HPDSKJET="   ,   "HPDSKJET=+1"             ,noclobber
+  win.ini   , Desktop,           ,"PreCacheCharacters=파일관리자제어판인쇄클립보드표시설치편집기문서작성페인트터미날메모장레코더카정계산매체플레녹음화면배색꼴포마우스책상정키프린터국가별설정짜간네워크확장라이버입력스템게임재본응구어머"
+  win.ini   , "Bitmap for TrueType font driver", "FontDriver=", "FontDriver=TTBITMAP.FOD"
+  win.ini   , "Bitmap for batang.fot",            , "Mode=2"
+  win.ini   , "Bitmap for batang.fot",            , "16=bt16.tbm"
+  win.ini   , "Bitmap for batang.fot",            , "20=bt20.tbm"
+  win.ini   , DBCSFonts,                          , "AssocSystemFont=TT,,BATANG.FOT"
+ win.ini,DBCSFonts,,"PreCacheCharacters=등록열동복사삭실행한글윈도우종료프로그램옵션창움말렬단독변경된내용을저장식바둑아콘편집취소잘라내붙여넣귀크닫업전환목찾법습서조다른름으쪽선택새검색찾삽입연결락세킵니대축소합ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎㅏㅑㅓㅕ"
+  win.ini   , DBCSFonts,                          , "CriticalErrorMsg="
+  win.ini   , "Associated CharSet",               , "ansi(0)=yes"
+  win.ini   , "Associated CharSet",               , "symbol(02)=no"
+  win.ini   , "Associated CharSet",               , "oem(ff)=yes"
+  win.ini   , "Associated DefaultFonts",          , "FontPackageDontCare=바탕체"
+  win.ini   , "Associated DefaultFonts",          , "FontPackageRoman=바탕체"
+  win.ini   , "Associated DefaultFonts",          , "FontPackageSwiss=돋움체"
+  win.ini   , "Associated DefaultFonts",          , "FontPackageModern=바탕체"
+  win.ini   , "Associated DefaultFonts",          , "FontPackageScript=바탕체"
+  win.ini   , "Associated DefaultFonts",          , "FontPackageDecorative=바탕체"
+  win.ini   , "Associated Fonts",                 , "명조=바탕체"
+  win.ini   , "Associated Fonts",                 , "고딕=돋움체"
+
+  ;
+  ; Remove these Win 3.0 font entries from win.ini because they have either
+  ; been replaced or removed for Win 3.1
+  ;
+  win.ini, Fonts, "Helv 8,10,12,14,18,24 (CGA res)="
+  win.ini, Fonts, "Helv 8,10,12,14,18,24 (EGA res)="
+  win.ini, Fonts, "Helv 8,10,12,14,18,24 (60 dpi)="
+  win.ini, Fonts, "Helv 8,10,12,14,18,24 (120 dpi)="
+  win.ini, Fonts, "Helv 8,10,12,14,18,24 (VGA res)="
+  win.ini, Fonts, "Helv 8,10,12,14,18,24 (8514/a res)="
+  win.ini, Fonts, "Tms Rmn 8,10,12,14,18,24 (CGA res)="
+  win.ini, Fonts, "Tms Rmn 8,10,12,14,18,24 (EGA res)="
+  win.ini, Fonts, "Tms Rmn 8,10,12,14,18,24 (60 dpi)="
+  win.ini, Fonts, "Tms Rmn 8,10,12,14,18,24 (120 dpi)="
+  win.ini, Fonts, "Tms Rmn 8,10,12,14,18,24 (VGA res)="
+  win.ini, Fonts, "Tms Rmn 8,10,12,14,18,24 (8514/a res)="
+  ;
+  ; Remove these font entries if they exist because these .ini entries
+  ; are obsolete. We use "TrueType" rather than "Scalable"
+  ;
+  win.ini, Fonts, "Arial (Scalable)="
+  win.ini, Fonts, "Arial Bold (Scalable)="
+  win.ini, Fonts, "Arial Bold Italic (Scalable)="
+  win.ini, Fonts, "Arial Italic (Scalable)="
+  win.ini, Fonts, "Courier (Scalable)="
+  win.ini, Fonts, "Courier Bold (Scalable)="
+  win.ini, Fonts, "Courier Italic (Scalable)="
+  win.ini, Fonts, "Courier Bold Italic (Scalable)="
+  win.ini, Fonts, "Courier (TrueType)"
+  win.ini, Fonts, "Courier Bold (TrueType)"
+  win.ini, Fonts, "Courier Bold Italic (TrueType)"
+  win.ini, Fonts, "Courier Italic (TrueType)"
+  win.ini, Fonts, "Times New Roman (Scalable)="
+  win.ini, Fonts, "Times New Roman Bold (Scalable)="
+  win.ini, Fonts, "Times New Roman Bold Italic (Scalable)="
+  win.ini, Fonts, "Times New Roman Italic (Scalable)="
+  win.ini, Fonts, "Symbol PS (Scalable)="
+  win.ini, Fonts, "Symbol (Scalable)="
+  ;
+  ; Remove these font entries if they exist because these .ini entries
+  ; are obsolete. We use "Plotter" rather than "All res" Also, 8 point was
+  ; added to the EGA res courier so we remove the old "Courier 10,12,15" font.
+  ;
+  win.ini, Fonts, "Roman (All res)="
+  win.ini, Fonts, "Script (All res)="
+  win.ini, Fonts, "Modern (All res)="
+  win.ini, Fonts, "Courier 10,12,15 (EGA res)="
+  ;
+  ; The following lines will cause the MS-DOS half of setup to effectivly
+  ; rename the [Fonts] section in win.ini. Setup does this by adding the
+  ; [wt4gpi8s56bz] string to the [Fonts] section and then deleting the
+  ; [Fonts] section string. Later, in the windows half of setup, it will
+  ; rename [wt4gpi8s56bz] back to [Fonts]. Do not change these names!
+  ;
+  win.ini, Fonts,              , "[wt4gpi8s56bz]"
+  win.ini, Fonts,   "[Fonts]"  ,
+  win.ini, Fonts,              ,"바탕체 (TrueType)=BATANG.FOT"
+  win.ini, Fonts,              ,"돋움체 (TrueType)=DOTUM.FOT"
+  win.ini, Fonts,              ,"궁서체 (TrueType)=GUNGSUH.FOT"
+  win.ini, Fonts,              ,"굴림체 (TrueType)=GULIM.FOT"
+  win.ini, Fonts,              ,"명조 (TrueType)=MJ.FOT"
+  win.ini, Fonts,              ,"고딕 (TrueType)=GT.FOT"
+  ; The following line makes USER skip persistent net connections
+  ; USER immediately deletes the entry so it is a onetime thing.
+  win.ini, windows,, "SetupWin=1"
+
+  ; The following lines fix problems with APPS
+  win.ini, Compatibility,"NOTSHELL=", "NOTSHELL=0x0001"
+  win.ini, Compatibility,"WPWINFIL=", "WPWINFIL=0x0006"
+  win.ini, Compatibility,"CCMAIL=", "CCMAIL=0x0008"
+  win.ini, Compatibility,"AMIPRO=", "AMIPRO=0x0010"
+  win.ini, Compatibility,"REM=", "REM=0x8022"
+  win.ini, Compatibility,"PIXIE=", "PIXIE=0x0040"
+  win.ini, Compatibility,"CP=", "CP=0x0040"
+  win.ini, Compatibility,"JW=", "JW=0x42080"
+  win.ini, Compatibility,"TME=", "TME=0x0100"
+  win.ini, Compatibility,"VB=", "VB=0x0200"
+  win.ini, Compatibility,"WIN2WRS=", "WIN2WRS=0x1210"
+  win.ini, Compatibility,"PACKRAT=", "PACKRAT=0x0800"
+  win.ini, Compatibility,"VISION=", "VISION=0x0040"
+  win.ini, Compatibility,"MCOURIER=", "MCOURIER=0x0800"
+  win.ini, Compatibility,"_BNOTES=", "_BNOTES=0x24000"
+  win.ini, Compatibility,"MILESV3=", "MILESV3=0x1000"
+  win.ini, Compatibility,"PM4=", "PM4=0x2000"
+  win.ini, Compatibility,"DESIGNER=", "DESIGNER=0x2000"
+  win.ini, Compatibility,"PLANNER=", "PLANNER=0x2000"
+  win.ini, Compatibility,"DRAW=", "DRAW=0x2000"
+  win.ini, Compatibility,"WINSIM=", "WINSIM=0x2000"
+  win.ini, Compatibility,"CHARISMA=", "CHARISMA=0x2000"
+  win.ini, Compatibility,"PR2=", "PR2=0x2000"
+  win.ini, Compatibility,"PLUS=", "PLUS=0x1000"
+  win.ini, Compatibility,"ED=", "ED=0x00010000"
+  win.ini, Compatibility,"PP=",
+  win.ini, Compatibility,"APORIA=", "APORIA=0x0100"
+  win.ini, Compatibility,"EXCEL=", "EXCEL=0x1000"
+  win.ini, Compatibility,"GUIDE=", "GUIDE=0x1000"
+  win.ini, Compatibility,"NETSET2=", "NETSET2=0x0100"
+  win.ini, Compatibility,"W4GL=", "W4GL=0x4000"
+  win.ini, Compatibility,"W4GLR=","W4GLR=0x4000"
+  win.ini, Compatibility,"TURBOTAX=","TURBOTAX=0x00080000"
+
+[system]
+; The various SYSTEM.DRV, SOUND.DRV, COMM.DRV
+;
+; These   are the   drivers   which may vary from system to system,
+; but are selected only   by the [machine] menu -- they do not have
+; special menus   for their selection.
+system   =    1:system.drv
+sound    =    1:mmsound.drv
+comm     =    2:comm.drv
+
+[machine]
+; This section defines default machine selections.  The   system
+; description from each   entry will appear in the initial machine
+; selection menu of Setup.
+;
+; An * means that setup will use the device specified here and override
+; the detected device, this applies to keyboards, mice, and displays.
+;
+; Each entry contains a   descriptive line for the system-selection menu,
+; followed by the filenames of the drivers in fixed order.
+;
+;      Field      1         2           3        4         5          6         7          8         9             10     11
+; prof_str      = Desc Str, System drv, kbd drv, kbd type, mouse drv, disp drv, sound drv, comm drv, himem switch, ebios, cookies
+;
+ibm_compatible  = "MS-DOS 시스템",system,kbd,t4s0enha,nomouse,vga,sound,comm,,ebios,
+apm             = "MS-DOS 시스템(APM, 자동 전원 관리 기능)",system,kbd,t4s0enha,nomouse,vga,sound,comm,,ebios,apm_cookz
+apm_sl          = "Intel 386SL 시스템(APM, 자동 전원 관리 기능)",system,kbd,t4s0enha,nomouse,vga,sound,comm,,ebios,apm_sl_cookz
+;
+; Cookies as specified in machine section
+;
+; ini file, section, cookie, needed file
+;
+; specialdriver,,,file will add an installable driver to [boot]drivers=
+;
+
+[apm_cookz]
+specialdriver,,,9:power.drv
+system.ini,386enh,"device=vpowerd.386",9:vpowerd.386
+,,,9:power.hlp
+
+[apm_sl_cookz]
+specialdriver,,,9:power.drv
+system.ini,386enh,"device=vpowerd.386",9:vpowerd.386
+,,,9:power.hlp
+system.ini,power.drv,"OptionsDLL=sl.dll",9:sl.dll
+,,,9:sl.hlp
+
+[special_adapter]
+eitherlink  = DMAbuffersize,32          ; Needed if EitherLink MC is detected.
+cdrom       = 8:lanman10.386            ; Needed for CD Rom extensions.
+
+[ebios]
+ebios       = x:*ebios               ; Required for most 386 machines.
+
+;
+; Language DLL must be installed for non US installation.
+;
+; profile = language DLL, DLL description, language ID (ilanguage)
+;
+[language]
+kor =              , "Korean"                             ,412
+
+[TrueType fonts]
+BATANG = "바탕체 (TrueType)"
+DOTUM = "돋움체 (TrueType)"
+GULIM = "굴림체 (TrueType)"
+GUNGSUH = "궁서체 (TrueType)"
+MJ = "명조 (TrueType)"
+GT = "고딕 (TrueType)"
+
+[BATANG.outline]
+batang.ttf= 3:batang.1tf, 3:batang.2tf, 4:batang.3tf, 4:batang.4tf, 4:batang.5tf, 5:batang.6tf, 5:batang.7tf, 5:batang.8tf, 3:batang.9tf
+
+[DOTUM.outline]
+dotum.ttf= 6:dotum.1tf, 6:dotum.2tf, 6:dotum.3tf, 6:dotum.4tf, 6:dotum.5tf, 6:dotum.6tf, 7:dotum.7tf, 7:dotum.8tf, 7:dotum.9tf
+
+[BATANG.bitmaps]
+bt16.tbm= 16, 8:bt16.tbm
+bt20.tbm= 20, 8:bt20.tbm
+
+[GULIM.outline]
+gulim.ttf= 7:gulim.1tf, 7:gulim.2tf
+
+[GUNGSUH.outline]
+gungsuh.ttf= 7:gungsuh.1tf, 8:gungsuh.2tf 
+
+[MJ.outline]
+mj.ttf=8:mj.1tf
+
+[GT.outline]
+gt.ttf=8:gt.1tf

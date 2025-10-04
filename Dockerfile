@@ -12,8 +12,8 @@ RUN rm -f /etc/apt/sources.list.d/google-chrome.list && \
 RUN mkdir -p /dos
 
 # Copy the disk image into the container
-COPY ./sam5pk/SAM5.bin /dos/SAM5.bin
-COPY ./sam5pk/SAM5.cue /dos/SAM5.cue
+COPY ./SAM5.bin /dos/SAM5.bin
+COPY ./SAM5.cue /dos/SAM5.cue
 
 # Add the dosbox configuration file to automatically run the game
 # This file should be in the same directory as the Dockerfile

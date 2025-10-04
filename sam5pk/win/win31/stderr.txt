@@ -1,0 +1,72 @@
+DOSBox version SVN-Daum
+Copyright 2002-2015 DOSBox Team, published under GNU GPL.
+도스박스 다음 카페 http://cafe.daum.net/dosbox
+─────────────────────────────
+GUI: Press Ctrl-F10 to capture/release mouse, Alt-F10 for configuration.
+CONFIG:Loading primary settings from config file dosbox.conf
+A20: fast remapping (64KB+1MB) DOSBox style
+ROM BIOS range: 0xe0000-0xFFFFF
+ROM BIOS range, final: 0xe0000-0xFFFFF
+ROMBIOS_GetMemory(0x01ff0 bytes,"BIOS with fixed layout",align=1,mustbe=0xfe000) = 0xfe000
+ROMBIOS_GetMemory(0x01600 bytes,"DOSBox callbacks region",align=1,mustbe=0xf1000) = 0xf1000
+ROMBIOS_GetMemory(0x0000e bytes,"DOSBox vm86 hack",align=1,mustbe=0xf0700) = 0xf0700
+Callback area starts at f000:1000
+APM BIOS allow: real=1 pm16=1 pm32=1
+voodoo: ogl=0
+MIDI:Opened device:win32
+Registered ISA PnP read port at 0x20b
+ROMBIOS_GetMemory(0x00010 bytes,"BIOS configuration (INT 15h AH=0xC0)",align=16,mustbe=0x00000) = 0xfdff0
+Glide:LFB access: read-write
+kernel allocation in umb option incompatible with other settings, disabling.
+UMB ending segment 0xe000 conflicts with BIOS at 0xe000, asking BIOS to move aside
+UMB ending segment 0xe000 conflicts with BIOS at 0xe000, truncating region
+WinPcap has to be installed for the NE2000 to work.
+SHELL: psp_seg 0x0118
+SHELL: env_seg 0x012b
+DOS_AllocateMemory(blocks=0x000b) = 0x0171-0x017b
+DOS_AllocateMemory(blocks=0x9e82) = 0x017d-0x9ffe
+IDE: index 0 slave=0
+DOS_AllocateMemory(blocks=0x000b) = 0x0171-0x017b
+DOS_AllocateMemory(blocks=0x9e82) = 0x017d-0x9ffe
+DOS_AllocateMemory(blocks=0x000b) = 0x0171-0x017b
+DOS_AllocateMemory(blocks=0x9e82) = 0x017d-0x9ffe
+DOS_AllocateMemory(blocks=0x000c) = 0x01d5-0x01e0
+DOS_AllocateMemory(blocks=0x9e1d) = 0x01e2-0x9ffe
+Enabling A20 gate for Windows in response to INIT broadcast
+DEBUG: INT 2Fh Windows 286/386 DOSX init broadcast issued (ES:BX=0000:0000 DS:SI=0000:0000 CX=0000 DX=0000 DI=030a(aka version 3.10))
+ [Enhanced mode]
+
+DEBUG: INT 2Fh Windows virtual device 'PAGEFILE' callout (BX(deviceID)=0x0021 CX(function)=0x0000)
+DOS_AllocateMemory(blocks=0x0fff) = 0xd001-0xdfff
+DOS_AllocateMemory(blocks=0x0004) = 0x015b-0x015e
+DOS_FreeMemory(seg=0xd001)
+DOS_AllocateMemory(blocks=0x0fff) = 0xd001-0xdfff
+DOSBox switched to max cycles, because of the setting: cycles=auto. If the game runs too fast try a fixed cycles amount in DOSBox's options.
+DEBUG: INT 2Fh Windows virtual device 'VMD' callout (BX(deviceID)=0x000c CX(function)=0x0001)
+INT 15h mouse initialized to 3-byte protocol
+INT 15h reporting mouse device ID 0x00
+DEBUG: INT 2Fh Windows virtual device 'DOSMGR' callout (BX(deviceID)=0x0015 CX(function)=0x0000)
+DEBUG: INT 2Fh Windows virtual device 'DOSMGR' callout (BX(deviceID)=0x0015 CX(function)=0x0004)
+DEBUG: INT 2Fh Windows virtual device 'DOSMGR' callout (BX(deviceID)=0x0015 CX(function)=0x0001)
+DEBUG: INT 2Fh Windows virtual device 'DOSMGR' callout (BX(deviceID)=0x0015 CX(function)=0x0003)
+DEBUG: INT 2Fh Windows virtual device 'DOSMGR' callout (BX(deviceID)=0x0015 CX(function)=0x0005)
+DEBUG: INT 2Fh Windows virtual device 'PAGEFILE' callout (BX(deviceID)=0x0021 CX(function)=0x0000)
+PNP OS changed I/O read port to 0x273 (from 0x20B)
+DEBUG: INT 2Fh Windows virtual device 'V86MMGR' callout (BX(deviceID)=0x0006 CX(function)=0x0000)
+DEBUG: INT 2Fh Windows virtual device 'VMD' callout (BX(deviceID)=0x000c CX(function)=0x0000)
+DOS_AllocateMemory(blocks=0x000c) = 0x0501-0x050c
+DOS_AllocateMemory(blocks=0x9af1) = 0x050e-0x9ffe
+DEBUG: INT 2Fh Windows virtual device 'DOSMGR' callout (BX(deviceID)=0x0015 CX(function)=0x0002)
+DEBUG: INT 2Fh Windows 286/386 DOSX exit broadcast issued (DX=0x0000)
+ [Enhanced mode]
+
+ROMBIOS memory dump:
+     0x000e0000-0x000f06ff free=1 
+     0x000f0700-0x000f070d free=0 DOSBox vm86 hack
+     0x000f070e-0x000f0fff free=1 
+     0x000f1000-0x000f25ff free=0 DOSBox callbacks region
+     0x000f2600-0x000fdfef free=1 
+     0x000fdff0-0x000fdfff free=0 BIOS configuration (INT 15h AH=0xC0)
+     0x000fe000-0x000fffef free=0 BIOS with fixed layout
+[end dump]
+TIMER: 1 leftover handlers (clean up!).

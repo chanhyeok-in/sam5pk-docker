@@ -1,0 +1,102 @@
+REGEDIT
+(the above line used as a quick check that we are indeed a registration script)
+
+ALL LINES THAT DON'T START WITH 'HKEY_CLASSES_ROOT' ARE COMMENTS.
+
+THIS FILE CONSISTS OF A LIST OF <key> <value> PAIRS. THE key AND value SHOULD 
+BE SEPERATED BY A " = " mark.
+
+Some of these entries duplicate those found in win.ini, for example, the
+file extension associations to executables.  Shell.dll always looks
+in the registration database before it looks in win.ini for this 
+information, so it is efficient to include it here.
+
+
+ENTRIES FOR NotePad
+
+HKEY_CLASSES_ROOT\.ini = txtfile
+HKEY_CLASSES_ROOT\.txt = txtfile
+HKEY_CLASSES_ROOT\txtfile = 텍스트 파일
+HKEY_CLASSES_ROOT\txtfile\shell\print\command = notepad.exe /p %1
+HKEY_CLASSES_ROOT\txtfile\shell\open\command = notepad.exe %1
+
+
+ENTRIES FOR Cardfile
+
+HKEY_CLASSES_ROOT\.crd = crdfile
+HKEY_CLASSES_ROOT\crdfile = 카드파일
+HKEY_CLASSES_ROOT\crdfile\shell\print\command = cardfile.exe /p %1
+HKEY_CLASSES_ROOT\crdfile\shell\open\command = cardfile.exe %1
+
+ENTRIES FOR Calendar
+
+HKEY_CLASSES_ROOT\.cal = calfile
+HKEY_CLASSES_ROOT\calfile = 일정표
+HKEY_CLASSES_ROOT\calfile\shell\print\command = calendar.exe /p %1
+HKEY_CLASSES_ROOT\calfile\shell\open\command = calendar.exe %1
+
+ENTRIES FOR Terminal
+
+HKEY_CLASSES_ROOT\.trm = trmfile
+HKEY_CLASSES_ROOT\trmfile = 터미날 설정
+HKEY_CLASSES_ROOT\trmfile\shell\open\command = terminal.exe %1
+
+ENTRIES FOR Macro Recorder
+
+HKEY_CLASSES_ROOT\.rec = recfile
+HKEY_CLASSES_ROOT\recfile = 레코더 매크로
+HKEY_CLASSES_ROOT\recfile\shell\open\command = recorder.exe %1
+
+ENTRIES FOR Write
+
+HKEY_CLASSES_ROOT\.wri = wrifile
+HKEY_CLASSES_ROOT\wrifile = 문서작성기 문서
+HKEY_CLASSES_ROOT\wrifile\shell\print\command = write.exe /p %1
+HKEY_CLASSES_ROOT\wrifile\shell\open\command = write.exe %1
+
+ENTRIES FOR Regedit
+
+HKEY_CLASSES_ROOT\.reg = regedit
+HKEY_CLASSES_ROOT\regedit = 등록 항목
+HKEY_CLASSES_ROOT\regedit\shell\open\command = regedit.exe %1
+
+ENTRIES FOR PBrush SERVER
+
+HKEY_CLASSES_ROOT\.bmp = PBrush
+HKEY_CLASSES_ROOT\.msp = PBrush
+HKEY_CLASSES_ROOT\.pcx = PBrush
+HKEY_CLASSES_ROOT\PBrush = 페인트 그림
+HKEY_CLASSES_ROOT\PBrush\shell\print\command = pbrush.exe /p %1
+HKEY_CLASSES_ROOT\PBrush\shell\open\command = pbrush.exe %1
+HKEY_CLASSES_ROOT\PBrush\protocol\StdFileEditing\verb\0 = 편집:
+HKEY_CLASSES_ROOT\PBrush\protocol\StdFileEditing\server = pbrush.exe
+
+ENTRIES FOR Packager SERVER
+
+HKEY_CLASSES_ROOT\Package = 꾸러미
+HKEY_CLASSES_ROOT\Package\protocol\StdFileEditing\verb\0 = 항목 활성(Aㅎ)
+HKEY_CLASSES_ROOT\Package\protocol\StdFileEditing\verb\1 = 꾸러미 편집(Eㄴ)
+HKEY_CLASSES_ROOT\Package\protocol\StdFileEditing\server = packager.exe
+
+
+ENTRIES for Sound Recorder
+
+HKEY_CLASSES_ROOT\.wav = SoundRec
+HKEY_CLASSES_ROOT\SoundRec = 녹음기
+HKEY_CLASSES_ROOT\SoundRec\shell\open\command = SoundRec.exe %1
+HKEY_CLASSES_ROOT\SoundRec\protocol\StdExecute\server = SoundRec.exe
+HKEY_CLASSES_ROOT\SoundRec\protocol\StdFileEditing\server = SoundRec.exe
+HKEY_CLASSES_ROOT\SoundRec\protocol\StdFileEditing\verb\1 = 편집(Eㄴ)
+HKEY_CLASSES_ROOT\SoundRec\protocol\StdFileEditing\verb\0 = 재생(Pㅈ)
+
+ENTRIES for Media Player
+
+HKEY_CLASSES_ROOT\.mid = MPlayer
+HKEY_CLASSES_ROOT\.rmi = MPlayer
+HKEY_CLASSES_ROOT\MPlayer = 매체 플레이어
+HKEY_CLASSES_ROOT\MPlayer\shell\open\command = MPlayer.exe %1
+
+ENTRIES for Word for Windows 2.0
+
+HKEY_CLASSES_ROOT\WordDocument\protocol\StdFileEditing\PackageObjects
+
