@@ -2,7 +2,12 @@
 FROM dorowu/ubuntu-desktop-lxde-vnc
 
 # Install dosbox
-RUN apt-get update && apt-get install -y dosbox
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends gnupg wget && \
+    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+    apt-get update && \
+    apt-get install -y dosbox && \
+    rm -rf /var/lib/apt/lists/*
 
 # Create a directory for the game data
 RUN mkdir -p /dos
