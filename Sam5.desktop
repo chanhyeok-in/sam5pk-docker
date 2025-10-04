@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Samkok 5 PK
+Comment=Run Samkok 5 PK in DOSBox
+Exec=dosbox
+Type=Application
+Icon=utilities-terminal
