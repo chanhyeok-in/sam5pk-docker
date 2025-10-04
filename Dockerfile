@@ -2,9 +2,8 @@
 FROM dorowu/ubuntu-desktop-lxde-vnc
 
 # Install dosbox
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends gnupg wget && \
-    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+RUN rm -f /etc/apt/sources.list.d/google-chrome.list && \
+    sed -i 's/mirror:\/\/mirrors.ubuntu.com\/mirrors.txt/http:\/\/archive.ubuntu.com\/ubuntu/g' /etc/apt/sources.list && \
     apt-get update && \
     apt-get install -y dosbox && \
     rm -rf /var/lib/apt/lists/*
