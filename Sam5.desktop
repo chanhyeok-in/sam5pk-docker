@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Samkok 5 PK
 Comment=Run Samkok 5 PK in DOSBox
-Exec=dosbox
+Exec=dosbox -conf /root/.dosbox/dosbox.conf
 Type=Application
 Icon=utilities-terminal
