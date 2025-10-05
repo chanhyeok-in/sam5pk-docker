@@ -11,7 +11,9 @@ RUN rm -f /etc/apt/sources.list.d/google-chrome.list && \
 # Create a directory for the game data
 RUN mkdir -p /dos
 
-# Copy the disk image into the container
+RUN mkdir -p /root/dosdrive
+
+# Copy the game CD image files into the container
 COPY ./SAM5.bin /dos/SAM5.bin
 COPY ./SAM5.cue /dos/SAM5.cue
 
