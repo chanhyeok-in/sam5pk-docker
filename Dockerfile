@@ -30,3 +30,5 @@ RUN chmod +x /root/Desktop/Sam5.desktop
 # The base image already exposes 5900 for VNC and starts the server.
 # Default VNC password is 'vncpassword'.
 # You can change it by setting the VNC_PASSWORD environment variable in Render.
+
+# Force rebuild 1
