@@ -16,6 +16,7 @@ RUN mkdir -p /root/dosdrive
 # Copy the game CD image files into the container
 COPY ./SAM5.bin /dos/SAM5.bin
 COPY ./SAM5.cue /dos/SAM5.cue
+COPY ./sam5pk/win /dos/win
 
 # Add the dosbox configuration file to automatically run the game
 # This file should be in the same directory as the Dockerfile
